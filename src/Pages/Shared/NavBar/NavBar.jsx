@@ -3,28 +3,24 @@
 const NavBar = () => {
     const navOption = (
       <>
+
         <li>
           <a>Item 1</a>
         </li>
         <li>
-          <a>Parent</a>
-          <ul className="p-2">
-            <li>
-              <a>Submenu 1</a>
-            </li>
-            <li>
-              <a>Submenu 2</a>
-            </li>
-          </ul>
+          <a>Item 2</a>
         </li>
         <li>
           <a>Item 3</a>
+        </li>
+        <li>
+          <a>Item 4</a>
         </li>
       </>
     );
   return (
     <div>
-      <div className="navbar bg-base-100">
+      <div className="navbar opacity-30 max-w-screen-xl fixed z-10 bg-black text-white">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
