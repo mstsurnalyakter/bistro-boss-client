@@ -1,5 +1,3 @@
-import React from 'react'
-import PropTypes from 'prop-types'
 import SectionTitle from '../../components/SectionTitle/SectionTitle';
 import featuredImg from '../../../assets/home/featured.jpg';
 import './Feature.css'
@@ -29,6 +27,6 @@ const Feature = () => {
   );
 }
 
-Feature.propTypes = {}
+
 
 export default Feature
