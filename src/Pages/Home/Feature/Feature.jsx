@@ -4,7 +4,7 @@ import './Feature.css'
 
 const Feature = () => {
   return (
-    <div className='featured-item bg-fixed text-white mb-10 pt-8 py-20'>
+    <section className='featured-item bg-fixed text-white mb-10 pt-8 py-20'>
       <SectionTitle subHeading="Check it out" heading="Feature Item" />
       <div className='md:flex bg-slate-500 bg-opacity-60 items-center justify-center pt-12 pb-20 px-36'>
         <div>
@@ -23,7 +23,7 @@ const Feature = () => {
           <button className="btn btn-outline border-0 border-b-4 mt-4">Order Now</button>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 
