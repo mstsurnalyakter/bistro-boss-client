@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import SectionTitle from "../../components/SectionTitle/SectionTitle"
+// import SectionTitle from "../../components/SectionTitle/SectionTitle"
 import MenuItem from "../../Shared/MenuItem/MenuItem";
+import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 
 
 const PopularMenu = () => {

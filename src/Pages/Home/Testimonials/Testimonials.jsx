@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import SectionTitle from "../../components/SectionTitle/SectionTitle"
+// import SectionTitle from "../../components/SectionTitle/SectionTitle"
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -9,6 +9,7 @@ import { Pagination, Navigation, Autoplay } from "swiper/modules";
 
 import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
+import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 
 const Testimonials = () => {
     const [reviews,setReviews] = useState();
