@@ -14,10 +14,10 @@ import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 const Testimonials = () => {
     const [reviews,setReviews] = useState();
     useEffect(()=>{
-        fetch('reviews.json')
-        .then(res=>res.json())
-        .then(data=>setReviews(data))
-        .catch(error=>console.error(error))
+        fetch("http://localhost:5000/reviews")
+          .then((res) => res.json())
+          .then((data) => setReviews(data))
+          .catch((error) => console.error(error));
     },[])
     console.log(reviews);
   return (
