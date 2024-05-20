@@ -12,18 +12,21 @@ const SignUp = () => {
     const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm()
 
 
   const onSubmit = async (data) =>{
     const {name,image, email, password} = data;
+    console.log(data);
     try {
 
     const result = await currentUser(email, password);
     console.log(result.user);
 
     await updateUserProfile(name,image);
+      reset();
       toast.success("Sign up successful")
       navigate("/");
 
@@ -67,19 +70,19 @@ const SignUp = () => {
 
               <div>
                 <label htmlFor="image" className="block mb-2 text-sm">
-                  image address
+                  Photo URL
                 </label>
                 <input
-                  type="text"
+                  type="url"
                   name="image"
                   id="image"
                   {...register("image", { required: true })}
                   required
-                  placeholder="Enter Your image Here"
+                  placeholder="Photo URL"
                   className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900"
                 />
                 {errors.image && (
-                  <span className="text-red-500">Image is required</span>
+                  <span className="text-red-500">Photo URL is required</span>
                 )}
               </div>
 

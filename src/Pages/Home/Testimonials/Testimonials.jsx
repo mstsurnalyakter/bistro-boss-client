@@ -19,7 +19,7 @@ const Testimonials = () => {
           .then((data) => setReviews(data))
           .catch((error) => console.error(error));
     },[])
-    console.log(reviews);
+
   return (
     <section className="my-20">
       <SectionTitle heading="Testimonials" subHeading="What Our Client Say" />

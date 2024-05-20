@@ -33,14 +33,20 @@ const NavBar = () => {
         </li>
 
         {user ? (
-          <>
+          <li className="flex gap-3 justify-center flex-row items-center">
+            <img
+              className="border-2 h-24 w-24 rounded-full border-[#d80343]"
+              src={user?.photoURL}
+              title={user?.displayName}
+              alt=""
+            />
             <button
               onClick={handleLogOut}
               className="btn btn-ghost bg-[#d80343] text-white hover:bg-[#d80343]"
             >
               LogOut
             </button>
-          </>
+          </li>
         ) : (
           <>
             <li>
