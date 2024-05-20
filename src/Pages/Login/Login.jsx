@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate, useNavigation } from "react-router-dom";
 import login from "../../assets/others/authentication2.png";
 import {
   loadCaptchaEnginge,
@@ -7,27 +7,39 @@ import {
   validateCaptcha,
 } from "react-simple-captcha";
 import { useEffect, useRef, useState } from "react";
+import useAuth from "../../hooks/useAuth";
 
+import toast from "react-hot-toast";
 
 const Login = () => {
 
+  const navigate = useNavigation();
+  const location = useLocation();
+  const from = location.state || "/";
+
   const captchaRef = useRef(null);
   const [disabled,setDisabled] = useState(true);
+  const { signIn } = useAuth();
 
   useEffect(()=>{
     loadCaptchaEnginge(6);
   },[])
 
-  const handleLogin = e => {
+  const handleLogin = async e => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-    const data = {
-      email,
-      password
+
+    try {
+     const result = await signIn(email, password);
+     if (result?.user) {
+       toast.success("Login Successful");
+       navigate(from);
+     }
+    } catch (error) {
+      toast.error(error.message)
     }
-    console.log(data);
 
   }
 
