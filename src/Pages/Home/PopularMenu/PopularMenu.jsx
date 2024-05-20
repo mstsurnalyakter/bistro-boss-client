@@ -5,8 +5,6 @@ import useMenu from "../../../hooks/useMenu";
 
 const PopularMenu = () => {
   const [menu] = useMenu()
-
-    console.log(menu);
   return (
     <section className="mb-12">
       <SectionTitle heading="From Our Menu" subHeading="Popular Items" />

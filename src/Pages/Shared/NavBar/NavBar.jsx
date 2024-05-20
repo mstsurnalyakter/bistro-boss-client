@@ -1,21 +1,50 @@
 import { NavLink } from "react-router-dom";
+import useAuth from "../../../hooks/useAuth";
+import toast from "react-hot-toast";
 
 
 const NavBar = () => {
+
+  const {logOut,user} = useAuth()
+
+  const handleLogOut = async () => {
+    try {
+      await logOut();
+    } catch (error) {
+      toast.error(error.message)
+    }
+  }
+
     const navOption = (
       <>
-      <li>
-        <NavLink to={'/'}>Home</NavLink>
-      </li>
-
         <li>
-          <NavLink to={'/menu'}>Our Menu</NavLink>
+          <NavLink to={"/"}>Home</NavLink>
         </li>
 
         <li>
-          <NavLink to={'/order/salad'}>Order</NavLink>
-          <NavLink to={'/login'}>Login</NavLink>
+          <NavLink to={"/menu"}>Our Menu</NavLink>
         </li>
+
+        <li>
+          <NavLink to={"/order/salad"}>Order</NavLink>
+        </li>
+
+        {user ? (
+          <>
+            <button
+              onClick={handleLogOut}
+              className="btn btn-ghost bg-[#d80343] text-white hover:bg-[#d80343]"
+            >
+              LogOut
+            </button>
+          </>
+        ) : (
+          <>
+            <li>
+              <NavLink to={"/login"}>Login</NavLink>
+            </li>
+          </>
+        )}
       </>
     );
   return (
