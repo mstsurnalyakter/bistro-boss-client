@@ -28,6 +28,9 @@ const NavBar = () => {
         <li>
           <NavLink to={"/order/salad"}>Order</NavLink>
         </li>
+        <li>
+          <NavLink to={"/secret"}>Secret</NavLink>
+        </li>
 
         {user ? (
           <>

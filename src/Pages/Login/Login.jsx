@@ -35,7 +35,7 @@ const Login = () => {
      const result = await signIn(email, password);
      if (result?.user) {
        toast.success("Login Successful");
-       navigate(from);
+       navigate(from,{replace:true});
      }
     } catch (error) {
       toast.error(error.message)
