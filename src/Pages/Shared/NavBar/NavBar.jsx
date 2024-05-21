@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import toast from "react-hot-toast";
+import { FaCartPlus } from "react-icons/fa";
 
 
 const NavBar = () => {
@@ -31,18 +32,27 @@ const NavBar = () => {
         <li>
           <NavLink to={"/secret"}>Secret</NavLink>
         </li>
+        <li>
+          <NavLink>
+            <button className="flex items-center gap-2">
+              <FaCartPlus/>
+              <div className="badge badge-secondary">+0</div>
+            </button>
+          </NavLink>
+        </li>
 
         {user ? (
           <li className="flex gap-3 justify-center flex-row items-center">
-            <img
+            {/* <img
               className="border-2 h-24 w-24 rounded-full border-[#d80343]"
               src={user?.photoURL}
               title={user?.displayName}
               alt=""
-            />
+            /> */}
+
             <button
               onClick={handleLogOut}
-              className="btn btn-ghost bg-[#d80343] text-white hover:bg-[#d80343]"
+              className="px-3 py2 ml-2 bg-[#d80343] text-white hover:bg-[#d80343]"
             >
               LogOut
             </button>
