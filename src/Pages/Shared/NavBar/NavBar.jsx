@@ -2,11 +2,14 @@ import { NavLink } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import toast from "react-hot-toast";
 import { FaCartPlus } from "react-icons/fa";
+import useCart from "../../../hooks/useCart";
 
 
 const NavBar = () => {
 
-  const {logOut,user} = useAuth()
+  const {logOut,user} = useAuth();
+  const  [cart] = useCart()
+ 
 
   const handleLogOut = async () => {
     try {
@@ -36,7 +39,7 @@ const NavBar = () => {
           <NavLink>
             <button className="flex items-center gap-2">
               <FaCartPlus/>
-              <div className="badge badge-secondary">+0</div>
+              <div className="badge badge-secondary">+{cart?.length}</div>
             </button>
           </NavLink>
         </li>
