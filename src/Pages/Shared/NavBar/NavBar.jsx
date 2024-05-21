@@ -9,7 +9,7 @@ const NavBar = () => {
 
   const {logOut,user} = useAuth();
   const  [cart] = useCart()
- 
+
 
   const handleLogOut = async () => {
     try {
@@ -36,9 +36,9 @@ const NavBar = () => {
           <NavLink to={"/secret"}>Secret</NavLink>
         </li>
         <li>
-          <NavLink>
+          <NavLink to="/dashboard/cart">
             <button className="flex items-center gap-2">
-              <FaCartPlus/>
+              <FaCartPlus />
               <div className="badge badge-secondary">+{cart?.length}</div>
             </button>
           </NavLink>
