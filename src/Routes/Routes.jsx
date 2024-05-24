@@ -58,6 +58,8 @@ const router = createBrowserRouter([
         path: "cart",
         element: <Cart />,
       },
+
+      // admin routes
       {
         path: "allUsers",
         element: <AllUsers />,
