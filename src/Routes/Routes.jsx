@@ -36,21 +36,29 @@ const router = createBrowserRouter([
         element: <SignUp />,
       },
       {
-        path:"secret",
-        element:<PrivateRoute><Secret/></PrivateRoute>
-      }
+        path: "secret",
+        element: (
+          <PrivateRoute>
+            <Secret />
+          </PrivateRoute>
+        ),
+      },
     ],
   },
   {
-    path:"dashboard",
-    element:<Dashboard/>,
-    children:[
+    path: "dashboard",
+    element: (
+      <PrivateRoute>
+        <Dashboard />
+      </PrivateRoute>
+    ),
+    children: [
       {
-        path:"cart",
-        element:<Cart/>
-      }
-    ]
-  }
+        path: "cart",
+        element: <Cart />,
+      },
+    ],
+  },
 ]);
 
 export default router;

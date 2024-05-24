@@ -4,8 +4,10 @@ import { RiHeartAddFill } from "react-icons/ri";
 import { TbBrandBooking } from "react-icons/tb";
 import { CiMenuBurger } from "react-icons/ci";
 import { MdEmail } from "react-icons/md";
+import useCart from "../hooks/useCart";
 
 const Dashboard = () => {
+    const [cart] = useCart();
   return (
     <div className="flex">
       {/* dashboard side bar */}
@@ -26,13 +28,13 @@ const Dashboard = () => {
           <li>
             <NavLink to="/dashboard/cart">
               <FaCartPlus />
-              Add a Review
+              My Cart
             </NavLink>
           </li>
           <li>
             <NavLink to="/dashboard/review">
               <RiHeartAddFill />
-              My Cart
+              Add a Review ({cart?.length})
             </NavLink>
           </li>
           <li>
@@ -69,7 +71,7 @@ const Dashboard = () => {
         </ul>
       </div>
       {/* dashboard content */}
-      <div className="flex-1">
+      <div className="flex-1 p-10">
         <Outlet />
       </div>
     </div>

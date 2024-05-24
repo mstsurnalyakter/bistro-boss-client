@@ -10,6 +10,7 @@ import useAuth from "../../hooks/useAuth";
 
 import toast from "react-hot-toast";
 import DynamicTitle from "../Shared/DynamicTitle/DynamicTitle";
+import SocialLogin from "../../components/SocialLogin/SocialLogin";
 
 const Login = () => {
 
@@ -130,6 +131,10 @@ const Login = () => {
               </button>
             </div>
           </form>
+          <div className="text-center my-5">
+            <SocialLogin />
+          </div>
+
           <div className="space-y-1">
             <button className="text-xs hover:underline hover:text-rose-500 text-gray-400">
               Forgot password?

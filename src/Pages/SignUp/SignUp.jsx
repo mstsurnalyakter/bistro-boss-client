@@ -4,9 +4,12 @@ import useAuth from "../../hooks/useAuth";
 import { useForm} from "react-hook-form";
 import DynamicTitle from "../Shared/DynamicTitle/DynamicTitle";
 import toast from "react-hot-toast";
+import useAxiosCommon from "../../hooks/useAxiosCommon";
+import SocialLogin from "../../components/SocialLogin/SocialLogin";
 
 const SignUp = () => {
     const {  currentUser,updateUserProfile } = useAuth();
+    const axiosCommon = useAxiosCommon();
 
   const navigate = useNavigate();
     const {
@@ -26,9 +29,18 @@ const SignUp = () => {
     console.log(result.user);
 
     await updateUserProfile(name,image);
+    const userInfo = {
+      name,
+      email
+    }
+
+    const { data } = await axiosCommon.post("/users", userInfo);
+
+    if (data.insertedId) {
       reset();
-      toast.success("Sign up successful")
+      toast.success("Sign up successful");
       navigate("/");
+    }
 
 
     } catch (error) {
@@ -156,6 +168,10 @@ const SignUp = () => {
               </button>
             </div>
           </form>
+        
+          <div className="text-center my-5">
+            <SocialLogin />
+          </div>
           <div className="flex items-center pt-4 space-x-1">
             <div className="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>
             <p className="px-3 text-sm dark:text-gray-400">
