@@ -2,8 +2,10 @@ import { FcGoogle } from "react-icons/fc";
 import useAuth from '../../hooks/useAuth';
 import toast from 'react-hot-toast';
 import { useLocation, useNavigate } from 'react-router-dom';
+import useAxiosCommon from "../../hooks/useAxiosCommon";
 
 const SocialLogin = () => {
+    const axiosCommon = useAxiosCommon();
     const {googleSignIn}= useAuth();
     const navigate = useNavigate();
     const location = useLocation();
@@ -12,9 +14,15 @@ const SocialLogin = () => {
     const handleGoogleSignIn = async () =>{
         try {
          const {user} =  await googleSignIn();
-         console.log(user);
+         const userInfo = {
+            email:user?.email,
+            name:user?.displayName
+         }
+        await axiosCommon.post("/users",userInfo)
             toast.success("Sign in with Google successful.");
-            navigate(from,{replace:true})
+            navigate(from, { replace: true });
+
+
         } catch (error) {
             toast.error(error.message);
         }
