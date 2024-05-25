@@ -17,8 +17,6 @@ const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state || "/";
-  console.log(from);
-
 
   const [disabled,setDisabled] = useState(true);
   const { signIn } = useAuth();
