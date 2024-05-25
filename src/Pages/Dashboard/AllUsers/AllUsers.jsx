@@ -12,7 +12,7 @@ const AllUsers = () => {
      const axiosCommon = useAxiosCommon();
 
      const {data:users=[],refetch ,isLoading} = useQuery({
-        queryKey:['users'],
+        queryKey:['user'],
         queryFn: async () =>{
             try {
                 const { data } = await axiosSecure.get("/users");
@@ -24,7 +24,7 @@ const AllUsers = () => {
      })
 
      const {mutateAsync} = useMutation({
-        mutationKey:['user'],
+        mutationKey:'user',
         mutationFn: async ({id} )=>{
                try {
                  const result = await Swal.fire({
