@@ -1,17 +1,17 @@
 import { NavLink, Outlet } from "react-router-dom";
 import { FaBook, FaCalendarAlt, FaCartPlus, FaHome, FaList, FaShoppingBag, FaUsers, FaUtensils } from "react-icons/fa";
 import { RiHeartAddFill } from "react-icons/ri";
-import { TbBrandBooking } from "react-icons/tb";
 import { CiMenuBurger } from "react-icons/ci";
 import { MdEmail } from "react-icons/md";
 import useCart from "../hooks/useCart";
+import useAdmin from "../hooks/useAdmin";
 // import { FaUtensils } from "react-icons/fa";
 
 const Dashboard = () => {
     const [cart] = useCart();
 
     //TODO: get isAdmin value from the database
-  const isAdmin = true;
+  const { isAdmin } = useAdmin();
 
   return (
     <div className="flex">
