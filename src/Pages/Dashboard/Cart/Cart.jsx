@@ -4,6 +4,7 @@ import { MdDeleteForever } from "react-icons/md";
 import { useMutation} from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import useAxiosCommon from "../../../hooks/useAxiosCommon";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
     const [cart,refetch] = useCart();
@@ -57,9 +58,17 @@ const Cart = () => {
       <div className="flex justify-evenly">
         <h2 className="text-3xl">Items: {cart?.length}</h2>
         <h2 className="text-3xl">Total Price: {totalPrice.toFixed(3)}</h2>
-        <button className="px-5 text-2xl py-1 rounded-md text-white bg-rose-400">
-          Pay
-        </button>
+        {cart?.length ? (
+          <Link to="/dashboard/payment">
+            <button className="px-5 text-2xl py-1 rounded-md text-white bg-rose-400">
+              Pay
+            </button>
+          </Link>
+        ) : (
+          <button disabled className="px-5 text-2xl disabled:cursor-not-allowed py-1 rounded-md text-white bg-rose-400">
+            Pay
+          </button>
+        )}
       </div>
       <div>
         <div className="overflow-x-auto ">
