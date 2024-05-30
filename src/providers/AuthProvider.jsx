@@ -57,7 +57,8 @@ const AuthProvider = ({children}) => {
           try {
             const { data } = await axiosCommon.post("/jwt", userInfo);
             if (data?.token) {
-              localStorage.setItem('access-token',data?.token)
+              localStorage.setItem('access-token',data?.token);
+               setLoading(false);
             }
           } catch (error) {
             console.error("Error:", error);
@@ -68,9 +69,10 @@ const AuthProvider = ({children}) => {
       }else{
         //TODO: remove token(if token stored in the client side)
         localStorage.removeItem("access-token");
+         setLoading(false);
       }
       console.log("currentUser: ", currentUser);
-      setLoading(false);
+
     });
     return () => {
       return unsubscribe();

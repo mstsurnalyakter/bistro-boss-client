@@ -3,11 +3,13 @@ import useAuth from "../../../hooks/useAuth";
 import toast from "react-hot-toast";
 import { FaCartPlus } from "react-icons/fa";
 import useCart from "../../../hooks/useCart";
+import useAdmin from "../../../hooks/useAdmin";
 
 
 const NavBar = () => {
 
   const {logOut,user} = useAuth();
+  const { isAdmin, adminRefetch, isAdminLoading } = useAdmin()
   const  [cart] = useCart()
 
 
@@ -32,9 +34,30 @@ const NavBar = () => {
         <li>
           <NavLink to={"/order/salad"}>Order</NavLink>
         </li>
-        <li>
-          <NavLink to={"/secret"}>Secret</NavLink>
-        </li>
+        {/* {user && isAdmin && (
+          <li>
+            <NavLink to={"/dashboard/adminHome"}>Dashboard</NavLink>
+          </li>
+        )}
+        {user && !isAdmin && (
+          <li>
+            <NavLink to={"/dashboard/userHome"}>Dashboard</NavLink>
+          </li>
+        )} */}
+        {user ? (
+          isAdmin ? (
+            <li>
+              <NavLink to={"/dashboard/adminHome"}>Dashboard</NavLink>
+            </li>
+          ) : (
+            <li>
+              <NavLink to={"/dashboard/userHome"}>Dashboard</NavLink>
+            </li>
+          )
+        ) : (
+          ""
+        )}
+        {/*  */}
         <li>
           <NavLink to="/dashboard/cart">
             <button className="flex items-center gap-2">
